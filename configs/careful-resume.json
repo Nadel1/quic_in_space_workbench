@@ -1,0 +1,52 @@
+{
+    "implementation": [
+        "quinn",
+        "quiche"
+    ],
+    "congestion": [
+        "bbr",
+        "cubic"
+    ],
+    "download": [
+        "1GB"
+    ],
+    "rateMbit": [
+        25
+    ],
+    "delayMs": [
+        500,
+        1500,
+        3000
+    ],
+    "lossPercent": [
+        0
+    ],
+    "outageType": [
+        "none"
+    ],
+    "maxIdleTimeout": [
+        100000
+    ],
+    "carefulResume": [
+        true
+    ],
+    "outageAmount": [
+        0
+    ],
+    "outageDuration": [
+        0
+    ],
+    "evaluationParams": [
+        {
+            "name": "evaluationParams",
+            "evaluationDetails": {
+                "displayFunction": "displayGraphsCrStatistical",
+                "evaluationFunction": "/",
+                "dataIndex": "3",
+                "colorBarName": "Throughput [Bps]",
+                "relevantEndpoint": "server",
+                "relevantFileEnding": "csv"
+            }
+        }
+    ]
+}

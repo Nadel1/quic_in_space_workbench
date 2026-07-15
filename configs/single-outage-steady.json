@@ -1,0 +1,63 @@
+{
+    "implementation": [
+        "quinn",
+        "quiche"
+    ],
+    "congestion": [
+        "bbr",
+        "cubic"
+    ],
+    "download": [
+        "1GB"
+    ],
+    "rateMbit": [
+        25
+    ],
+    "delayMs": [
+        500,
+        1500,
+        3000
+    ],
+    "lossPercent": [
+        0
+    ],
+    "outageType": [
+        "steady"
+    ],
+    "maxIdleTimeout": [
+        100000
+    ],
+    "carefulResume": [
+        true
+    ],
+    "outageAmount": [
+        1
+    ],
+    "outageDuration": [
+        2,8,60
+    ],
+    "evaluationParams": [
+        {
+            "name": "evaluationParams",
+            "evaluationDetails": {
+                "displayFunction": "displayGraphs",
+                "evaluationFunction": "evaluateRecovery",
+                "dataIndex": "3",
+                "colorBarName": "Recovery [s]",
+                "relevantEndpoint": "server",
+                "relevantFileEnding": "csv"
+            }
+        },
+         {
+            "name": "evaluationParamsHeatmapNewRecovery",
+            "evaluationDetails": {
+                "displayFunction": "displayRecoveryHeatmap",
+                "evaluationFunction": "evaluateNewRecovery",
+                "dataIndex": "3",
+                "colorBarName": "Recovery percentage[%]",
+                "relevantEndpoint": "server",
+                "relevantFileEnding": "csv"
+            }
+        }
+    ]
+}

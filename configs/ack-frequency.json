@@ -1,0 +1,65 @@
+{
+    "implementation": [
+        "quinn"
+    ],
+    "congestion": [
+        "bbr",
+        "cubic"
+    ],
+    "download": [
+        "1GB"
+    ],
+    "rateMbit": [
+        25
+    ],
+    "delayMs": [
+        500,
+        1500,
+        3000
+    ],
+    "lossPercent": [
+        0
+    ],
+    "outageType": [
+        "none"
+    ],
+    "maxIdleTimeout": [
+        100000
+    ],
+    "ackThreshold": [
+        1,
+        5,
+        9,
+        10,
+        15,
+        20
+    ],
+    "ackDelay": [
+        25000,
+        "delay*2/4",
+        "delay*2/2",
+        "delay*2*3/4",
+        "delay*2",
+        "delay*2*2",
+        "delay*2*4"
+    ],
+    "outageAmount": [
+        0
+    ],
+    "outageDuration": [
+        0
+    ],
+    "evaluationParams": [
+        {
+            "name": "evaluationParams",
+            "evaluationDetails": {
+                "displayFunction": "displayHeatmapCumulative",
+                "evaluationFunction": "calculateCumulativeDataOverTime",
+                "dataIndex": "3",
+                "colorBarName": "Throughput [Bps]",
+                "relevantEndpoint": "client",
+                "relevantFileEnding": "csv"
+            }
+        }
+    ]
+}
