@@ -1,7 +1,7 @@
 {
     "steady": {
         "quiche": {
-            "bbr2": {
+            "bbr": {
                 "delay-500": [
                     100,
                     150
@@ -63,7 +63,7 @@
     },
     "slowstart": {
         "quiche": {
-            "bbr2": {
+            "bbr": {
                 "delay-500": [
                     10,
                     10
