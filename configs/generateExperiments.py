@@ -105,7 +105,6 @@ def generateExperiments(config):
         ).items()
         if k in config
     }
-    print(sortingParameters)
     for parameter, index in sortingParameters.items():
         length = len(config[parameter])
 

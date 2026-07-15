@@ -1,0 +1,231 @@
+{
+    "experiments": [
+        {
+            "delayMs": 500,
+            "implementation": "quinn",
+            "congestion": "bbr",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quinn-cca_bbr-delay_500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 500,
+            "implementation": "quinn",
+            "congestion": "cubic",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quinn-cca_cubic-delay_500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 500,
+            "implementation": "quiche",
+            "congestion": "bbr",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quiche-cca_bbr-delay_500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 500,
+            "implementation": "quiche",
+            "congestion": "cubic",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quiche-cca_cubic-delay_500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 1500,
+            "implementation": "quinn",
+            "congestion": "bbr",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quinn-cca_bbr-delay_1500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 1500,
+            "implementation": "quinn",
+            "congestion": "cubic",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quinn-cca_cubic-delay_1500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 1500,
+            "implementation": "quiche",
+            "congestion": "bbr",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quiche-cca_bbr-delay_1500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 1500,
+            "implementation": "quiche",
+            "congestion": "cubic",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quiche-cca_cubic-delay_1500ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 3000,
+            "implementation": "quinn",
+            "congestion": "bbr",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quinn-cca_bbr-delay_3000ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 3000,
+            "implementation": "quinn",
+            "congestion": "cubic",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quinn-cca_cubic-delay_3000ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 3000,
+            "implementation": "quiche",
+            "congestion": "bbr",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quiche-cca_bbr-delay_3000ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        },
+        {
+            "delayMs": 3000,
+            "implementation": "quiche",
+            "congestion": "cubic",
+            "download": "1GB",
+            "outageAmount": 0,
+            "carefulResume": true,
+            "maxIdleTimeout": 100000,
+            "rateMbit": 25,
+            "outageDuration": 0,
+            "lossPercent": 0,
+            "outageType": "none",
+            "name": "implementation_quiche-cca_cubic-delay_3000ms-rate_25Mbps-download_1GB-loss_0-outageDuration_0-outageAmount_0-outageType_none-"
+        }
+    ],
+    "evaluations": [
+        {
+            "name": "evaluationParams",
+            "evaluationDetails": {
+                "displayFunction": "displayGraphsCrStatistical",
+                "evaluationFunction": "/",
+                "dataIndex": "3",
+                "colorBarName": "Throughput [Bps]",
+                "relevantEndpoint": "server",
+                "relevantFileEnding": "csv"
+            },
+            "sortingBucketsAndIndices": [
+                {
+                    "length": 2,
+                    "index": 1
+                },
+                {
+                    "length": 2,
+                    "index": 3
+                },
+                {
+                    "length": 1,
+                    "index": -1
+                },
+                {
+                    "length": 1,
+                    "index": 7
+                },
+                {
+                    "length": 3,
+                    "index": 5
+                },
+                {
+                    "length": 1,
+                    "index": 9
+                },
+                {
+                    "length": 1,
+                    "index": 15
+                },
+                {
+                    "length": 1,
+                    "index": -1
+                },
+                {
+                    "length": 1,
+                    "index": 13
+                },
+                {
+                    "length": 1,
+                    "index": 11
+                },
+                {
+                    "length": 1,
+                    "index": 16
+                }
+            ]
+        }
+    ]
+}
