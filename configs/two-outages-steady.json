@@ -25,7 +25,7 @@
         "steady"
     ],
     "maxIdleTimeout": [
-        100000
+        10000000
     ],
     "carefulResume": [
         true

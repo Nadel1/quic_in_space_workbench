@@ -201,7 +201,7 @@ let
       jail enter server ${bash} -c '
         mkdir server
         cd server
-        ${mkServerCmd "${name}-server-baseline.csv"}
+        ${mkServerCmd "${name}server-baseline.csv"}
       ' &
       SERVER_PID=$!
 
@@ -211,7 +211,7 @@ let
       jail enter client ${bash} -c '
         mkdir client
         cd client
-        ${mkClientCmd "${name}-client-baseline.csv"}
+        ${mkClientCmd "${name}client-baseline.csv"}
       '
 
       echo "Stopping baseline server"
@@ -223,7 +223,7 @@ let
 
       jail enter server ${bash} -c '
         cd server
-        CAREFUL_RESUME=true ${mkServerCmd "${name}-server-cr.csv"}
+        CAREFUL_RESUME=true ${mkServerCmd "${name}server-cr.csv"}
       ' &
       SERVER_PID=$!
 
@@ -232,7 +232,7 @@ let
       echo "Starting careful resume client"
       jail enter client ${bash} -c '
         cd client
-        CAREFUL_RESUME=true ${mkClientCmd "${name}-client-cr.csv"}
+        CAREFUL_RESUME=true ${mkClientCmd "${name}client-cr.csv"}
       '
 
       kill $SERVER_PID
