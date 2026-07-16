@@ -28,7 +28,7 @@
         10000000
     ],
     "carefulResume": [
-        true
+        false
     ],
     "outageAmount": [
         2

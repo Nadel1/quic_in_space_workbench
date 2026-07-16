@@ -1,7 +1,7 @@
 {
     "implementation": [
-        "quinn",
-        "quiche"
+        "quiche",
+        "quinn"
     ],
     "congestion": [
         "bbr",
@@ -28,13 +28,15 @@
         10000000
     ],
     "carefulResume": [
-        true
+        false
     ],
     "outageAmount": [
         1
     ],
     "outageDuration": [
-        2,8,60
+        2,
+        8,
+        60
     ],
     "evaluationParams": [
         {
@@ -48,7 +50,7 @@
                 "relevantFileEnding": "csv"
             }
         },
-         {
+        {
             "name": "evaluationParamsHeatmapNewRecovery",
             "evaluationDetails": {
                 "displayFunction": "displayRecoveryHeatmap",
