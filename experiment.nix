@@ -15,7 +15,7 @@ let
   outageDuration = if experiment?"outageDuration" then experiment.outageDuration else "0";
   outageAmount = if experiment?"outageAmount" then experiment.outageAmount else "0";
   outageType = if experiment?"outageType" then experiment.outageType else "None";
-  carefulResume = if experiment?"carefulResume" then true else false;
+  carefulResume = if experiment?"carefulResume" then experiment.carefulResume else false;
   ackThreshold = if experiment?"ackThreshold" then toString experiment.ackThreshold else "2";#2 is the default, see rfc9000
   ackDelay = if experiment? "ackDelay" then toString experiment.ackDelay else "25";#25 ms is the default, see "max_ack_delay" in rfc9000
   outagesConfig =
@@ -152,7 +152,9 @@ let
         outageStart=(${builtins.concatStringsSep " " (map toString outageStart)})
 
         for ((i=0; i<${toString outageAmount}; i++)); do
+          
           sleep ''${outageStart[$i]}
+          
           echo "Outage start"
 
           down client eth1
@@ -160,6 +162,7 @@ let
           down server eth1
           down server eth2
 
+          echo "Sleep for: " ${toString outageDuration}
           sleep ${toString outageDuration}
 
           echo "Outage end"
