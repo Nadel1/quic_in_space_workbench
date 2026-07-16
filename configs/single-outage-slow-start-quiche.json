@@ -1,6 +1,5 @@
 {
     "implementation": [
-        "quinn",
         "quiche"
     ],
     "congestion": [

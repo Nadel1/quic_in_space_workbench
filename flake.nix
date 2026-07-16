@@ -143,6 +143,12 @@
               config=(builtins.fromJSON(builtins.readFile ./experiments/single-outage-slow-start.json));
             };
 
+          packages.singleOutageSlowstartExperimentsQuiche =
+            mkExperimentRunner {
+              name = "singleOutageSlowstartExperimentsQuiche";
+              config=(builtins.fromJSON(builtins.readFile ./experiments/single-outage-slow-start-quiche.json));
+            };
+
           packages.twoOutagesSteadyExperiments =
             mkExperimentRunner {
               name = "twoOutagesSteadyExperiments";
