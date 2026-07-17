@@ -281,11 +281,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1784212897,
-        "narHash": "sha256-JWmQhxb9S553jHYsFu+Dgn3H5txbMoKPtyxl6B+MvYY=",
+        "lastModified": 1784292160,
+        "narHash": "sha256-pXFo1n+m2ZdbYdbRqbU1SzPHiiW9Io1NbPcN0UhJeiQ=",
         "ref": "further-research",
-        "rev": "1b71d76d038f1a6e3b3609b04d959efc384259d1",
-        "revCount": 4012,
+        "rev": "66a7ed7429b974b371f8e1ec178df78d510386b2",
+        "revCount": 4013,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Nadel1/quinn/"

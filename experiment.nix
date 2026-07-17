@@ -151,19 +151,14 @@ let
           echo "Outage start"
 
           down client eth1
-          down client eth2
           down server eth1
-          down server eth2
-
           echo "Sleep for: " ${toString outageDuration}
           sleep ${toString outageDuration}
 
           echo "Outage end"
 
           up client eth1
-          up client eth2
           up server eth1
-          up server eth2
 
           _MAC=$(jail enter server ${ip} link show dev eth1 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p')
           jail enter client ${ip} neigh add 10.0.1.2 lladdr "$_MAC" dev eth1
@@ -172,15 +167,8 @@ let
           _MAC=$(jail enter client ${ip} link show dev eth1 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p')
           jail enter server ${ip} neigh add 10.0.1.1 lladdr "$_MAC" dev eth1
 
-          _MAC=$(jail enter server ${ip} link show dev eth2 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p')
-          jail enter client ${ip} neigh add 10.0.2.2 lladdr "$_MAC" dev eth2
-          jail enter client ${ip} neigh add 10.0.3.2 lladdr "$_MAC" dev eth2
-
-          _MAC=$(jail enter client ${ip} link show dev eth2 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p')
-          jail enter server ${ip} neigh add 10.0.2.1 lladdr "$_MAC" dev eth2
-
           jail enter client ${ip} route add 10.0.3.0/24 via 10.0.1.2 dev eth1 metric 100
-          jail enter client ${ip} route add 10.0.3.0/24 via 10.0.2.2 dev eth2 metric 200
+          jail enter server ${ip} route add 10.0.1.0/24 via 10.0.3.1 dev eth1 metric 100
         done
       }
 
@@ -237,8 +225,7 @@ let
       echo "Starting server"
 
       jail enter server ${bash} -c '
-        mkdir server
-        cd server
+
         ${mkServerCmd "${name}-server.csv"}
       ' &
       SERVER_PID=$!
@@ -249,14 +236,14 @@ let
       echo "Starting client here"
 
       jail enter client ${bash} -c '
-        mkdir client
-        cd client
-        ${mkClientCmd "${name}-client.csv"}&
+        ${mkClientCmd "${name}-client.csv"}
         
-      '
+      '&
       CLIENT_PID=$!
+      echo "Client PID: " $CLIENT_PID
       wait $CLIENT_PID
       kill $SERVER_PID
+      echo "Killed server"
       wait $SERVER_PID || true
     ''}
 
