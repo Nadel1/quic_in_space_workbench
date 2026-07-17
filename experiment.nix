@@ -138,8 +138,8 @@ let
   exec =
     ''
     ${if outageType != "none" then ''
-      down() { jail enter "$1" ${ip} link set "$2" down; }
-      up()   { jail enter "$1" ${ip} link set "$2" up; }
+      down() { jail enter "$1" ${bash} -c '${ip} link set eth1 down'; }
+      up()   { jail enter "$1" ${bash} -c '${ip} link set eth1 up'; }
 
       outages() {
         outageStart=(${builtins.concatStringsSep " " (map toString outageStart)})
@@ -150,25 +150,25 @@ let
           
           echo "Outage start"
 
-          down client eth1
-          down server eth1
+          down client eth1 || echo "client down failed"
+          ${ip} netns client ip link set eth1 down
+          ${ip} netns server ip link set eth1 down
+          down server eth1 || echo "server down failed"
           echo "Sleep for: " ${toString outageDuration}
+          
           sleep ${toString outageDuration}
-
           echo "Outage end"
+          ${ip} netns client ip link set eth1 up
+          ${ip} netns server ip link set eth1 up
+          _MAC=$(jail enter server ${bash} -c '${ip} link show dev eth1 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p' ')
+          jail enter client ${bash} -c ' ${ip} neigh add 10.0.1.2 lladdr "$_MAC" dev eth1'
+          jail enter client ${bash} -c ' ${ip} neigh add 10.0.3.2 lladdr "$_MAC" dev eth1'
 
-          up client eth1
-          up server eth1
+          _MAC=$(jail enter client ${bash} -c ' ${ip} link show dev eth1 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p' ')
+          jail enter server ${bash} -c '${ip} neigh add 10.0.1.1 lladdr "$_MAC" dev eth1'
+          jail enter server ${bash} -c '${ip} neigh add 10.0.3.1 lladdr "$_MAC" dev eth1'
 
-          _MAC=$(jail enter server ${ip} link show dev eth1 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p')
-          jail enter client ${ip} neigh add 10.0.1.2 lladdr "$_MAC" dev eth1
-          jail enter client ${ip} neigh add 10.0.3.2 lladdr "$_MAC" dev eth1
-
-          _MAC=$(jail enter client ${ip} link show dev eth1 | sed -n 's/.*link\/ether \([0-9a-f:]*\).*/\1/p')
-          jail enter server ${ip} neigh add 10.0.1.1 lladdr "$_MAC" dev eth1
-
-          jail enter client ${ip} route add 10.0.3.0/24 via 10.0.1.2 dev eth1 metric 100
-          jail enter server ${ip} route add 10.0.1.0/24 via 10.0.3.1 dev eth1 metric 100
+          echo "Connection restored"
         done
       }
 
