@@ -87,7 +87,13 @@ let
             addresses = [{
               address = "10.0.1.1";
               prefixLength = 24;
-            }];
+        
+            }
+            {
+              address = "10.0.3.1";
+              prefixLength = 24;
+            }
+            ];
 
             routes = [{
               address = "10.0.3.0";
@@ -97,26 +103,14 @@ let
             }];
           };
 
-          eth2.ipv4 = {
-            addresses = [{
-              address = "10.0.2.1";
-              prefixLength = 24;
-            }];
-
-            routes = [{
-              address = "10.0.3.0";
-              prefixLength = 24;
-              via = "10.0.2.2";
-              options.metric = "200";
-            }];
-          };
         };
 
       };
 
       server = {
         networking.interfaces = {
-          eth1.ipv4.addresses = [
+          eth1.ipv4= {
+          addresses=[
             {
               address = "10.0.1.2";
               prefixLength = 24;
@@ -126,17 +120,16 @@ let
               prefixLength = 24;
             }
           ];
+          routes = [{
+              address = "10.0.1.0";
+              prefixLength = 24;
+              via = "10.0.3.1";
+              options.metric = "100";
+            }];
+          };
+            
 
-          eth2.ipv4.addresses = [
-            {
-              address = "10.0.2.2";
-              prefixLength = 24;
-            }
-            {
-              address = "10.0.3.2";
-              prefixLength = 24;
-            }
-          ];
+            
         };
       };
     };
