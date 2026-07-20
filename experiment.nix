@@ -31,9 +31,9 @@ let
     else
       "quinn-client http://10.0.3.2:4433/${download}  "
       + "--congestion-control ${congestion} "
-      + "--idle-timeout ${maxIdleTimeout} "
       + "--ack-eliciting-threshold ${ackThreshold} "
       + "--requested-max-ack-delay ${ackDelay} "
+      + "--idle-timeout ${maxIdleTimeout} "
       + "--logging-file ${loggingName}";
 
 
@@ -162,7 +162,6 @@ let
           down server eth1
           down server eth2
 
-          echo "Sleep for: " ${toString outageDuration}
           sleep ${toString outageDuration}
 
           echo "Outage end"
@@ -258,10 +257,12 @@ let
       jail enter client ${bash} -c '
         mkdir client
         cd client
-        ${mkClientCmd "${name}-client.csv"}&
+        ${mkClientCmd "${name}-client.csv"}
         
-      '
+      '&
       CLIENT_PID=$!
+      echo "Client: " $CLIENT_PID
+      echo "Server: " $SERVER_PID
       wait $CLIENT_PID
       kill $SERVER_PID
       wait $SERVER_PID || true
