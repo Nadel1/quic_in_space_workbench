@@ -54,11 +54,11 @@ let
       + "--ack-eliciting-threshold ${ackThreshold} "
       + "--requested-max-ack-delay ${ackDelay} "
       + "--logging-file ${loggingName}";
-  clientBaseline = mkClientCmd "${name}-client-baseline.csv";
-  clientCR = "CAREFUL_RESUME=true ${mkClientCmd "${name}-client-cr.csv"}";
+  clientBaseline = mkClientCmd "${name}client-baseline.csv";
+  clientCR = "CAREFUL_RESUME=true ${mkClientCmd "${name}client-cr.csv"}";
   
-  serverBaseline = mkServerCmd "${name}-server-baseline.csv";
-  serverCR = "CAREFUL_RESUME=true ${mkServerCmd "${name}-server-cr.csv"}";
+  serverBaseline = mkServerCmd "${name}server-baseline.csv";
+  serverCR = "CAREFUL_RESUME=true ${mkServerCmd "${name}server-cr.csv"}";
   outageStart =
     if outageType == "none" then
       []
@@ -201,8 +201,6 @@ let
       echo "Starting baseline server"
 
       jail enter server ${bash} -c '
-        mkdir server
-        cd server
         ${mkServerCmd "${name}server-baseline.csv"}
       ' &
       SERVER_PID=$!
@@ -211,8 +209,6 @@ let
 
       echo "Starting baseline client"
       jail enter client ${bash} -c '
-        mkdir client
-        cd client
         ${mkClientCmd "${name}client-baseline.csv"}
       '
 
@@ -233,7 +229,6 @@ let
 
       echo "Starting careful resume client"
       jail enter client ${bash} -c '
-        cd client
         CAREFUL_RESUME=true ${mkClientCmd "${name}client-cr.csv"}
       '
 
@@ -243,9 +238,7 @@ let
       echo "Starting server"
 
       jail enter server ${bash} -c '
-        mkdir server
-        cd server
-        ${mkServerCmd "${name}-server.csv"}
+        ${mkServerCmd "${name}server.csv"}
       ' &
       SERVER_PID=$!
       echo "Server_PID: $SERVER_PID"
@@ -255,9 +248,7 @@ let
       echo "Starting client here"
 
       jail enter client ${bash} -c '
-        mkdir client
-        cd client
-        ${mkClientCmd "${name}-client.csv"}
+        ${mkClientCmd "${name}client.csv"}
         
       '&
       CLIENT_PID=$!
