@@ -47,6 +47,16 @@ def resolve_ack_delay(value, delay):
 
 
 def createName(exp):
+    try:
+        ackThreshold = exp['ackThreshold']
+    except KeyError:
+        ackThreshold = 2
+    
+    try:
+        maxAckDelay = exp['ackDelay']
+    except KeyError:
+        maxAckDelay = 25
+
     return (
         f"implementation_{exp['implementation']}-"
         f"cca_{exp['congestion']}-"
@@ -57,6 +67,8 @@ def createName(exp):
         f"outageDuration_{exp['outageDuration']}-"
         f"outageAmount_{exp['outageAmount']}-"
         f"outageType_{exp['outageType']}-"
+        f"ackThreshold_{ackThreshold}-"
+        f"maxAckDelay_{maxAckDelay}"
     )
 
 
