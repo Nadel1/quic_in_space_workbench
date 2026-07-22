@@ -139,9 +139,16 @@ def generateExperiments(config):
     }
     return result
 
+def genExperiment(configFile):
+    with open(configFile) as f:
+        config = json.load(f)
+
+    result = generateExperiments(config)
+    with open(f"../experiments/{configFile}", "w") as f:
+        json.dump(result, f, indent=4)
+    print(f"Generated {len(result['experiments'])} experiments in ../experiments/{configFile}\n")
 
 if __name__ == "__main__":
-
     if len(sys.argv) < 2 or sys.argv[1] in ("-h", "--help"):
         print(f"""
 ============================================================
@@ -176,13 +183,4 @@ please refer to the provided configuration files.
 ============================================================
 """)
         exit(0)
-    with open(sys.argv[1]) as f:
-        config = json.load(f)
-
-    result = generateExperiments(config)
-
-
-    with open(f"../experiments/{sys.argv[1]}", "w") as f:
-        json.dump(result, f, indent=4)
-
-    print(f"Generated {len(result['experiments'])} experiments in ../experiments/{sys.argv[1]}")
+    genExperiment(sys.argv[1])
