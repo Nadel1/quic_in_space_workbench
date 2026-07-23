@@ -73,12 +73,6 @@ def createName(exp):
 
 
 def generateExperiments(config):
-
-
-    evaluationKey = [
-        "evaluationParams"
-    ]
-
     experiments = []
     missing = [
         k for k in NECESSARY_EXPERIMENT_KEYS_AND_INDICES.keys()
@@ -125,14 +119,16 @@ def generateExperiments(config):
             "index": index
         })
     evaluations = []
-    evaluationDetails = []
-    evaluationValues = config["evaluationParams"] 
-    for e in evaluationValues:
-        e["sortingBucketsAndIndices"] = sortingBuckets
-        evaluations.append(e)
+    try:
+        evaluationValues = config["evaluationParams"] 
+        evaluationDetails = []
+        evaluationValues = config["evaluationParams"] 
+        for e in evaluationValues:
+            e["sortingBucketsAndIndices"] = sortingBuckets
+            evaluations.append(e)
    
-    
-
+    except KeyError:
+        print("No evaluation parameters provided!")    
     result = {
         "experiments": experiments,
         "evaluations": evaluations,
